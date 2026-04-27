@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雄安信小满装饰工程有限公司 - 官方官网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8faf9;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.35s ease;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== 导航栏 墨绿色+金色+下划线特效+二级菜单 ========== */
+        .header {
+            background-color: #003329;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 3px 18px rgba(0,51,41,0.25);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            color: #f8c818;
+            letter-spacing: 1px;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 45px;
+        }
+
+        .nav-list li {
+            position: relative;
+        }
+
+        .nav-list a {
+            font-size: 16px;
+            color: #ffffffee;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-list a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f8c818;
+            transition: width 0.35s ease;
+        }
+
+        .nav-list a:hover {
+            color: #f8c818;
+        }
+
+        .nav-list a:hover::after {
+            width: 100%;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            color: #003329;
+            width: 170px;
+            border-radius: 6px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            display: none;
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .submenu li {
+            padding: 12px 20px;
+        }
+
+        .submenu a {
+            color: #003329;
+        }
+
+        .submenu a:hover {
+            color: #f8c818;
+        }
+
+        .nav-list li:hover .submenu {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {opacity:0; transform: translateY(-10px);}
+            to {opacity:1; transform: translateY(0);}
+        }
+
+        /* ========== 轮播图 手动+自动3秒切换+箭头 ========== */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 290px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel-wrap {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: rgba(0,51,41,0.65);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .prev:hover, .next:hover {
+            background: #f8c818;
+            color: #003329;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {left: 18px;}
+        .next {right: 18px;}
+
+        .top-carousel {
+            margin-top: 80px;
+            height: 600px;
+            border-radius: 0;
+        }
+
+        /* ========== 通用标题样式 ========== */
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin: 90px 0 50px;
+            color: #003329;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 100px;
+            height: 3px;
+            background: #f8c818;
+            display: block;
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ========== 案例卡片布局 统一3个一排 ========== */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-bottom: 70px;
+        }
+
+        .case-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            transition: all 0.4s ease;
+            border: 1px solid #eee;
+        }
+
+        .case-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 30px rgba(0,51,41,0.15);
+            border-color: #f8c818;
+        }
+
+        .case-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .case-info h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            color: #003329;
+        }
+
+        .case-info p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ========== 装修计算器模块 ========== */
+        .calculator-wrap {
+            background: linear-gradient(135deg, #003329 0%, #004d3d 100%);
+            padding: 70px 0;
+            margin: 60px 0;
+        }
+
+        .calculator-box {
+            display: flex;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .calc-left {
+            flex: 1;
+            padding: 60px;
+        }
+
+        .calc-left h2 {
+            font-size: 30px;
+            color: #003329;
+            margin-bottom: 12px;
+        }
+
+        .calc-tag {
+            display: inline-block;
+            background: #f8c818;
+            color: #003329;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+
+        .calc-form-item {
+            margin-bottom: 26px;
+        }
+
+        .calc-form-item input {
+            width: 100%;
+            padding: 15px 22px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        .calc-form-item input:focus {
+            outline: none;
+            border-color: #f8c818;
+        }
+
+        .calc-btn {
+            width: 100%;
+            padding: 16px;
+            background: #003329;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 19px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calc-btn:hover {
+            background: #f8c818;
+            color: #003329;
+        }
+
+        .calc-right {
+            flex: 1;
+            background: url("img/一站式装修服务.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-panel {
+            background: rgba(0,51,41,0.85);
+            color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .price-panel h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #f8c818;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            width: 260px;
+            margin: 12px 0;
+            font-size: 17px;
+        }
+
+        /* ========== AR/VR沉浸式模块 ========== */
+        .arvr-section {
+            background: #003329;
+            color: #fff;
+            padding: 85px 30px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 80px;
+        }
+
+        .arvr-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #f8c818;
+        }
+
+        .arvr-section p {
+            max-width: 850px;
+            margin: 0 auto 35px;
+            font-size: 17px;
+            line-height: 1.9;
+            opacity: 0.92;
+        }
+
+        .arvr-btn {
+            padding: 16px 45px;
+            background: #f8c818;
+            color: #003329;
+            border: none;
+            border-radius: 8px;
+            font-size: 19px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .arvr-btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(248,200,24,0.4);
+        }
+
+        /* ========== 用户登录表单 ========== */
+        .login-box {
+            max-width: 560px;
+            margin: 0 auto 90px;
+            background: #fff;
+            padding: 55px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .login-box h2 {
+            text-align: center;
+            color: #003329;
+            font-size: 27px;
+            margin-bottom: 35px;
+        }
+
+        .login-item {
+            margin-bottom: 25px;
+        }
+
+        .login-item label {
+            display: block;
+            margin-bottom: 9px;
+            font-weight: 600;
+            color: #003329;
+        }
+
+        .login-item input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-submit {
+            width: 100%;
+            padding: 16px;
+            background: #003329;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-submit:hover {
+            background: #f8c818;
+            color: #003329;
+        }
+
+        /* ========== 底部 ========== */
+        .footer {
+            background: #003329;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .footer p {
+            margin: 10px 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 页面切换 */
+        .page {display: none;}
+        .page.active {display: block;}
+
+        .intro-text {
+            text-align:center;
+            line-height:2.2;
+            font-size:17px;
+            color:#555;
+            margin-bottom:40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="header">
+        <div class="container nav">
+            <div class="logo">雄安信小满装饰工程有限公司</div>
+            <ul class="nav-list">
+                <li><a onclick="switchPage('home')">首页</a></li>
+                <li>
+                    <a onclick="switchPage('works')">作品展示</a>
+                    <ul class="submenu">
+                        <li><a onclick="switchPage('home')">家装案例</a></li>
+                        <li><a onclick="switchPage('home')">工装案例</a></li>
+                        <li><a onclick="switchPage('home')">办公家具</a></li>
+                    </ul>
+                </li>
+                <li><a onclick="switchPage('about')">关于我们</a></li>
+                <li><a onclick="switchPage('calc')">装修报价</a></li>
+                <li><a onclick="switchPage('arvr')">AR/VR体验</a></li>
+                <li><a onclick="switchPage('login')">用户登录</a></li>
+                <li><a onclick="switchPage('contact')">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 首页 -->
+    <div id="home" class="page active">
+        <!-- 顶部大图轮播 3秒自动+手动切换 -->
+        <div class="carousel top-carousel" id="topBanner">
+            <div class="carousel-wrap">
+                <div class="carousel-item active"><img src="img/雄安信小满.jpg" alt="雄安信小满高端装修"></div>
+                <div class="carousel-item"><img src="img/家装案例展示金茂府1.jpg" alt="家装案例展示"></div>
+                <div class="carousel-item"><img src="img/工装案例展示小湘村1.jpg" alt="工装案例展示"></div>
+                <div class="carousel-item"><img src="img/办公工具3.jpg" alt="办公家具定制"></div>
+                <div class="carousel-item"><img src="img/一站式装修服务.jpg" alt="一站式装修服务"></div>
+            </div>
+            <button class="prev" onclick="goPrev('topBanner')">‹</button>
+            <button class="next" onclick="goNext('topBanner')">›</button>
+        </div>
+
+        <div class="container">
+            <!-- 公司简介 -->
+            <h2 class="section-title">关于信小满</h2>
+            <div class="intro-text">
+                雄安信小满装饰工程有限公司深耕雄安新区二十载，专注高端家装、商业工装、办公家具定制一站式装修服务。<br>
+                拥有资深设计团队、标准化施工工艺、一线品牌材料、透明无增项报价，为每一位业主打造理想品质家。<br>
+                诚信为本、精益求精，给您高品质、高颜值、高环保的专属装修解决方案。
+            </div>
+
+            <!-- 装修计算器模块 -->
+            <div class="calculator-wrap">
+                <div class="calculator-box">
+                    <div class="calc-left">
+                        <span class="calc-tag">今日已有986位业主获取精准预算</span>
+                        <h2>装修计算器</h2>
+                        <div class="calc-form-item">
+                            <input type="text" placeholder="请输入您的姓名">
+                        </div>
+                        <div class="calc-form-item">
+                            <input type="number" placeholder="请输入房屋面积 ㎡">
+                        </div>
+                        <div class="calc-form-item">
+                            <input type="text" placeholder="请输入您所在城市">
+                        </div>
+                        <div class="calc-form-item">
+                            <input type="tel" placeholder="请输入手机号码，接收专属报价">
+                        </div>
+                        <button class="calc-btn" onclick="alert('报价已生成，客服将极速联系您！')">立即获取装修预算</button>
+                    </div>
+                    <div class="calc-right">
+                        <div class="price-panel">
+                            <h3>您的装修预算参考</h3>
+                            <div class="price-row"><span>设计费</span><span>依据实际情况而定</span></div>
+                            <div class="price-row"><span>工程费</span><span>依据实际情况而定</span></div>
+                            <div class="price-row"><span>材料费</span><span>依据实际情况而定</span></div>
+                            <div class="price-row"><span>管理费</span><span>依据实际情况而定</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 家装案例 -->
+            <h2 class="section-title">家装案例</h2>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="carousel" id="jia1">
+                        <div class="carousel-wrap">
+                            <div class="carousel-item active"><img src="img/荷香园2.jpg"></div>
+                            <div class="carousel-item"><img src="img/荷香园3.jpg"></div>
+                            <div class="carousel-item"><img src="img/荷香园4.jpg"></div>
+                        </div>
+                        <button class="prev" onclick="goPrev('jia1')">‹</button>
+                        <button class="next" onclick="goNext('jia1')">›</button>
+                    </div>
+                    <div class="case-info"><h3>荣东荷香园</h3><p>现代简约 · 精品实景住宅</p></div>
+                </div>
+                <div class="case-card">
+                    <div class="carousel" id="jia2">
+                        <div class="carousel-wrap">
+                            <div class="carousel-item active"><img src="img/金茂府2.jpg"></div>
+                            <div class="carousel-item"><img src="img/金茂府3.jpg"></div>
+                            <div class="carousel-item"><img src="img/金茂府4.jpg"></div>
+                        </div>
+                        <button class="prev" onclick="goPrev('jia2')">‹</button>
+                        <button class="next" onclick="goNext('jia2')">›</button>
+                    </div>
+                    <div class="case-info"><h3>雄安金茂府</h3><p>新中式 · 高端品质大宅</p></div>
+                </div>
+                <div class="case-card">
+                    <div class="carousel" id="jia3">
+                        <div class="carousel-wrap">
+                            <div class="carousel-item active"><img src="img/loft2.jpg"></div>
+                            <div class="carousel-item"><img src="img/loft3.jpg"></div>
+                            <div class="carousel-item"><img src="img/loft4.jpg"></div>
+                        </div>
+                        <button class="prev" onclick="goPrev('jia3')">‹</button>
+                        <button class="next" onclick="goNext('jia3')">›</button>
+                    </div>
+                    <div class="case-info"><h3>春兰荟loft</h3><p>轻奢工业 · 复式空间改造</p></div>
+                </div>
+            </div>
+
+            <!-- 工装+办公家具 统一3个一排 -->
+            <h2 class="section-title">工装案例 & 办公家具</h2>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="carousel" id="gong1">
+                        <div class="carousel-wrap">
+                            <div class="carousel-item active"><img src="img/小湘村2.jpg"></div>
+                            <div class="carousel-item"><img src="img/小湘村3.jpg"></div>
+                            <div class="carousel-item"><img src="img/小湘村4.jpg"></div>
+                        </div>
+                        <button class="prev" onclick="goPrev('gong1')">‹</button>
+                        <button class="next" onclick="goNext('gong1')">›</button>
+                    </div>
+                    <div class="case-info"><h3>安新小湘村湘菜馆</h3><p>新中式餐饮 · 全案落地</p></div>
+                </div>
+
+                <div class="case-card">
+                    <div class="carousel" id="office1">
+                        <div class="carousel-wrap">
+                            <div class="carousel-item active"><img src="img/办公工具3.jpg"></div>
+                            <div class="carousel-item"><img src="img/办公工具4.jpg"></div>
+                            <div class="carousel-item"><img src="imh/办公工具5.jpg"></div>
+                        </div>
+                        <button class="prev" onclick="goPrev('office1')">‹</button>
+                        <button class="next" onclick="goNext('office1')">›</button>
+                    </div>
+                    <div class="case-info"><h3>办公桌椅组合</h3><p>人体工学 · 舒适高效</p></div>
+                </div>
+
+                <div class="case-card">
+                    <div class="carousel" id="office2">
+                        <div class="carousel-wrap">
+                            <div class="carousel-item active"><img src="img/公司照片1.jpg"></div>
+                            <div class="carousel-item"><img src="img/公司照片2.jpg"></div>
+                            <div class="carousel-item"><img src="img/公司照片3.jpg"></div>
+                        </div>
+                        <button class="prev" onclick="goPrev('office2')">‹</button>
+                        <button class="next" onclick="goNext('office2')">›</button>
+                    </div>
+                    <div class="case-info"><h3>整体办公空间</h3><p>企业专属 · 一站式定制</p></div>
+                </div>
+            </div>
+
+            <!-- AR/VR模块 -->
+            <div class="arvr-section">
+                <h2>🏠 AR/VR 720°沉浸式空间体验</h2>
+                <p>足不出户，在家即可720°全景预览装修完工效果，沉浸式提前住进新家，空间尺寸、材质光影一目了然，所见即所得！</p>
+                <button class="arvr-btn" onclick="alert('全景体验已开启！')">立即沉浸式体验</button>
+            </div>
+
+            <!-- 用户登录 -->
+            <h2 class="section-title">用户登录</h2>
+            <div class="login-box">
+                <h2>客户管理系统登录</h2>
+                <form>
+                    <div class="login-item">
+                        <label>用户名</label>
+                        <input type="text" placeholder="请输入用户名">
+                    </div>
+                    <div class="login-item">
+                        <label>登录密码</label>
+                        <input type="password" placeholder="请输入密码">
+                    </div>
+                    <button class="login-submit">立即登录</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 其他二级页面 -->
+    <div id="works" class="page"><div class="container" style="padding-top:120px;text-align:center;"><h1 class="section-title">作品展示合集</h1></div></div>
+    <div id="about" class="page"><div class="container" style="padding-top:120px;text-align:center;"><h1 class="section-title">关于我们</h1></div></div>
+    <div id="calc" class="page"><div class="container" style="padding-top:120px;"><div class="calculator-wrap"></div></div></div>
+    <div id="arvr" class="page"><div class="container" style="padding-top:120px;"><div class="arvr-section"></div></div></div>
+    <div id="login" class="page"><div class="container" style="padding-top:120px;"><div class="login-box"></div></div></div>
+    <div id="contact" class="page"><div class="container" style="padding-top:120px;text-align:center;"><h1 class="section-title">联系我们</h1></div></div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <p>© 2025 雄安信小满装饰工程有限公司 版权所有</p>
+        <p>高端家装 | 商业工装 | 办公家具定制 | 一站式整体装修服务</p>
+        <p>地址：河北雄安新区容城县金湖南街80号 | 服务热线：16633311891</p>
+    </div>
+
+    <script>
+        // 页面切换
+        function switchPage(id){
+            document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // 轮播切换函数
+        function goNext(id){
+            let wrap = document.getElementById(id);
+            let items = wrap.querySelectorAll('.carousel-item');
+            let active = wrap.querySelector('.carousel-item.active');
+            let idx = Array.from(items).indexOf(active);
+            active.classList.remove('active');
+            idx = (idx+1)%items.length;
+            items[idx].classList.add('active');
+        }
+
+        function goPrev(id){
+            let wrap = document.getElementById(id);
+            let items = wrap.querySelectorAll('.carousel-item');
+            let active = wrap.querySelector('.carousel-item.active');
+            let idx = Array.from(items).indexOf(active);
+            active.classList.remove('active');
+            idx = (idx-1+items.length)%items.length;
+            items[idx].classList.add('active');
+        }
+
+        // 全局自动轮播 3秒切换
+        let carouselIds = ['topBanner','jia1','jia2','jia3','gong1','office1','office2'];
+        setInterval(()=>{
+            carouselIds.forEach(id=>goNext(id));
+        },3000);
+    </script>
+</body>
+</html>
